@@ -1,5 +1,5 @@
 checkStatus();  //Get the current status when the browser opens
-window.setInterval(checkStatus, 30000); //Keep checking every 30 seconds
+window.setInterval(checkStatus, 20000); //Keep checking every 30 seconds
 
 //Get the current status
 function checkStatus(){
@@ -14,11 +14,10 @@ function checkStatus(){
 function setStatus () {
     var data = JSON.parse(this.response);
     
-    if(data.status == "disabled"){  //If disabled set badge
+    //If disabled set badge
+    if(data.status == "disabled"){
         browser.browserAction.setBadgeText({text: "Off"});
-    }
-
-    else if (data.status == 'enabled') {    //else turn on badge
+    } else if (data.status == 'enabled') { //else turn on badge
         browser.browserAction.setBadgeText({text: "On"});
     }
 }
@@ -27,3 +26,4 @@ function setStatus () {
 function statusError(){
     browser.browserAction.setBadgeText({text: ""});
 }
+

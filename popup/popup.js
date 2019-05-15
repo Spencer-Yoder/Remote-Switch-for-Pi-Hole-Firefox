@@ -85,4 +85,82 @@ function gatherStorage(result) {
 }
 
 document.getElementById("button1").addEventListener("click", buttonClicked);    //Action listener for button clicked
+
+
+// Quick disable for 10 seconds
+document.getElementById("quick-btn-1").addEventListener("click", function(){
+    var httpResponse = new XMLHttpRequest();
+    var url = null;
+
+    if(document.getElementById("button1").value == "Disable") {
+        var time = 10;
+        url = "http://pi.hole/admin/api.php?disable=" + String(time) + "&auth=" + API_KEY;
+    } else if(document.getElementById("button1").value == "Enable"){ 
+        url = "http://pi.hole/admin/api.php?enable&auth=" + API_KEY;
+    }
+
+    httpResponse.addEventListener("load", setStatus);
+    httpResponse.addEventListener("error", statusError);
+    httpResponse.open("GET", String(url));
+    httpResponse.send();
+});
+
+// Quick disable for 30 seconds
+document.getElementById("quick-btn-2").addEventListener("click", function(){
+    var httpResponse = new XMLHttpRequest();
+    var url = null;
+
+    if(document.getElementById("button1").value == "Disable") {
+        var time = 30;
+        url = "http://pi.hole/admin/api.php?disable=" + String(time) + "&auth=" + API_KEY;
+    } else if(document.getElementById("button1").value == "Enable"){ 
+        url = "http://pi.hole/admin/api.php?enable&auth=" + API_KEY;
+    }
+
+    httpResponse.addEventListener("load", setStatus);
+    httpResponse.addEventListener("error", statusError);
+    httpResponse.open("GET", String(url));
+    httpResponse.send();
+});
+
+// Quick disable for 5 minutes
+document.getElementById("quick-btn-3").addEventListener("click", function(){
+    var httpResponse = new XMLHttpRequest();
+    var url = null;
+
+    if(document.getElementById("button1").value == "Disable") {
+        var time = 5 * 60;
+        url = "http://pi.hole/admin/api.php?disable=" + String(time) + "&auth=" + API_KEY;
+    } else if(document.getElementById("button1").value == "Enable"){ 
+        url = "http://pi.hole/admin/api.php?enable&auth=" + API_KEY;
+    }
+
+    httpResponse.addEventListener("load", setStatus);
+    httpResponse.addEventListener("error", statusError);
+    httpResponse.open("GET", String(url));
+    httpResponse.send();
+});
+
+// Quick disable permanently
+document.getElementById("quick-btn-4").addEventListener("click", function(){
+    var httpResponse = new XMLHttpRequest();
+    var url = null;
+
+    if(document.getElementById("button1").value == "Disable") {
+        var time = 0;
+        url = "http://pi.hole/admin/api.php?disable=" + String(time) + "&auth=" + API_KEY;
+    } else if(document.getElementById("button1").value == "Enable"){ 
+        url = "http://pi.hole/admin/api.php?enable&auth=" + API_KEY;
+    }
+
+    httpResponse.addEventListener("load", setStatus);
+    httpResponse.addEventListener("error", statusError);
+    httpResponse.open("GET", String(url));
+    httpResponse.send();
+});
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", getPiHoleStatus); //When the page loads get the status
