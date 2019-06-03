@@ -8,8 +8,16 @@
     <body>
         <div class="status">Pi-Hole Status:</div>
         <div id="display_status"></div>
-        <div class="text"></div>Enter the amount of time to turn off Pi-Hole.</div>
-        <div class="text">Use 0 for indefinite</div>
+
+        <div class="quick-buttons">
+            <input type="button" id="quick-btn-1" class="btn" value="10 Seconds"/>
+            <input type="button" id="quick-btn-2" class="btn" value="30 Seconds"/>
+            <input type="button" id="quick-btn-3" class="btn" value="5 Minutes"/>
+            <input type="button" id="quick-btn-4" class="btn" value="Permanent"/>
+        </div>
+        
+        <div class="text">Enter the amount of time to turn off Pi-Hole.</div>
+        <label for="time">(time in minutes - use 0 for indefinite)</label>
         <input type="number" id="time" value="10" placeholder="10 minutes" min="0"/>
   
         <input type="button" id="button1" class="button" value="Test"/>
